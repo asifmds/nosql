@@ -1,0 +1,31 @@
+Create Shard using MongoDB.
+
+Step 1 : Create directory for config server, a meta-server to store meta data of shards. The directories can be created in same drive or different
+
+Step 2 : Start the service mongod to Configure config svr in port no 27019. Execute the following service in a separate prompt(Ubuntu). Repeat the steps three times with different port numbers to create three config servers.
+
+Step 3 : Create directory for shard server, database server to store partitioned database. Two number of shards and with replication factor 3
+
+Step 4 : Create two number of shards and every shard server will have replica set with Replication Factor 3 using mongod service with parameters. The following service should be executed in a separate command prompt(Ubuntu )
+
+Step 5 : Create primary shard server(Query Router) and members to replica set. The following command should be executed on command prompt (Ubuntu)
+
+Step 6 : Exit from MongoDB shell, go to prompt and repeat Step 5 for Second sharded cluster of port 27100(Primary), 27101(Replica), 27102(Replica). Now steps 5 and 6 successfully created and configured two sharded clusters. The next step is to start mongos service and create link to config servers.
+
+Step 7 : Create Query server and create link to config servers using mongos service with parameters.
+
+Step 8 : Create link with MongoDB shard server to sharded cluster by executing mongo service on command prompt
+
+Step 9: Apply Range based sharding, execute the following queries and find execution time of each.
+  1.updateOne()
+  2.updateMany()
+  3.findOneAndUpdate()
+  4.find()
+    a. $get,$lte
+    b.$all
+    c.$elemMatch
+    d.$slice
+    e.$exists=true or false
+    f.find().limit()
+  5. MapReduce()
+  6.Aggregate()
