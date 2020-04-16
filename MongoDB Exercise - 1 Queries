@@ -1,1 +1,26 @@
+a) List top 10 stations with most outbound trips (Show station name and number of trips)
 
+db.airportbb.aggregate([{$group : {_id : "$Dest", "outbound" : { $sum: 1} }}, { $sort : { outbound : -1 }}, {$limit:10}]);
+
+b) List top 10 stations with most inbound trips (Show station name and number of trips)
+
+db.airportbb.aggregate([{$group : {_id : "$Origin", "inbound" : { $sum: 1} }}, { $sort : { "inbound": -1 } }, {$limit:10}]);
+
+c) List top 5 routes with most trips (Show starting station name, ending station name and number of trips)
+
+db.airportbb.aggregate([ { $group : {_id :{"Origin": "$Origin", "Dest": "$Dest"}, "mosttrip" : { $sum: 1} } }, { $sort : { mosttrip : -1 } }, {$limit:5} ]);
+
+d) List the hour number (for example 13 means 1pm -2pm) and number of trips which start from the station "IND” 
+
+db.airportbb.aggregate([
+{ "$match": {
+"Origin": "IND"
+}},{ $group : {_id :{"Origin":"$Origin", "Time":{ $floor: [{ $divide: [ "$DepTime" , 100 ] }] } } , "Total no of trips" : { $sum: 1} }}]);
+
+e) List the hour number (for example 13 means 1pm -2pm) and number of trips which end at the station "IND"
+
+db.airportbb.aggregate([
+{ "$match": {
+"Dest": "IND"
+}}
+,{ $group : {_id :{"destn":"$Dest", "Time":{ $floor: [{ $divide: [ "$ArrTime" , 100 ] }] } } , "Total no of trips" : { $sum: 1} }}]);
