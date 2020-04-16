@@ -1,1 +1,15 @@
 
+Import the Hubway data into MongoDB and. Answer the following questions using the Query Language:
+
+a) List top 10 stations with most outbound trips (Show station name and number
+of trips)
+
+b) List top 10 stations with most inbound trips (Show station name and number of trips)
+
+c) List top 5 routes with most trips (Show starting station name, ending station name and number of trips)  
+ List the hour number (for example 13 means 1pm -2pm) and number of trips which start from the station "B.U. Central"
+
+d) List the hour number (for example 13 means 1pm -2pm) and number of trips
+which end at the station "B.U. Central"
+
+The airport data can be found at http://stat-computing.org/dataexpo/2009/supplementaldata.html
