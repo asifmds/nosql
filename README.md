@@ -1,2 +1,2 @@
 # nosql
-Monodb, Cassandra and Neo4j basic concepts
+Monodb, Cassandra and Neo4j hands-on
